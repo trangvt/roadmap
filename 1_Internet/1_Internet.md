@@ -10,7 +10,3 @@
 
 1.6/ What is hosting?
 ---------------------------------------------
-## 1.1/ How does the internet work?
-	https://roadmap.sh/guides/what-is-internet
-
-	
