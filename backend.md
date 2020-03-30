@@ -1,3 +1,6 @@
+https://topdev.vn/blog/lo-trinh-tro-thanh-backend-developer/
+
+https://roadmap.sh/
 1/ Internet
 2/ Basic Frontend Knowledge
 3/ OS and General Knowledge
