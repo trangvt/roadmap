@@ -24,3 +24,4 @@ https://roadmap.sh/
 21/ Building for Scale
 22/ Tools
 23/ UML - Unified Modeling Language
+24/ AWS
