@@ -21,3 +21,7 @@
 3.10/ Cron
 
 3.11/ Error
+
+3.12/ Editor
+
+3.13/ Install
