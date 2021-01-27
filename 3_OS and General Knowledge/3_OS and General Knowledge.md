@@ -1,27 +1,27 @@
-3.1/ Terminal Usage
+1/ Terminal Usage
 
-3.2/ How OSs work in general?
+2/ How OSs work in general?
 
-3.3/ Process Management
+3/ Process Management
 
-3.4/ Basic Terminal Commands
+4/ Basic Terminal Commands
 	grep, awk, sed, lsof, curl, wget, tail, head, less, find, ssh, kill
 
-3.5/ Memory Management
+5/ Memory Management
 
-3.6/ Interprocess Communication
+6/ Interprocess Communication
 
-3.7/ I/O Management
+7/ I/O Management
 
-3.8/ POSIX Basics
+8/ POSIX Basics
 	stdin, stdout, stderr, pipes
 
-3.9/ Basic Networking Concepts
+9/ Basic Networking Concepts
 
-3.10/ Cron
+10/ Cron
 
-3.11/ Error
+11/ Error
 
-3.12/ Editor
+12/ Editor
 
-3.13/ Install
+13/ Install
