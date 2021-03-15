@@ -5,8 +5,11 @@ Export
 Zip file
 	$ zip malay23_20200121.zip malay23_20200121.sql
 
+Download file
+	$ scp STG-MCCP-MY:/var/www/html/folder_name/mccp_my_prod_0310.sql.zip mccp_my_prod_0310.sql.zip
+
 Upload file
-	$ scp malay23_20200121.zip MCCP-MY-UPGRADE:/var/www/html/mccp-malaysia/
+	$ scp mccp_my_prod_0310.sql.zip STG-MCCP-MY:/var/www/htmlfolder_name
 
 Unzip file
 	$ unzip malay23_20200121.zip

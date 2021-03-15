@@ -30,6 +30,7 @@ https://www.cyberciti.biz/faq/nginx-linux-restart/
 	service nginx restart
 	service nginx reload
 
+	sudo systemctl stop nginx
 	sudo systemctl restart nginx
 	sudo systemctl reload nginx
 

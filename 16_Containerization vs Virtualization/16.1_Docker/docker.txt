@@ -1,0 +1,83 @@
+1/ Clone docker 
+$ git clone git@git02.smartosc.com:quangld/docker-magento2.git
+$ git checkout ...
+
+----------------------------------------------------------------------------
+2/ Clone project into magento/
+git clone git@bitbucket.org:courex/mccp-malaysia.git
+
+----------------------------------------------------------------------------
+3 /var/www/html/mccp-my$ docker-compose up -d
+
+sudo nano /var/www/html/mccp-my/docker-compose.yml
+Change ports from 80:80 to 81:80
+
+----------------------------------------------------------------------------
+4/ Import DB
+Copy DB to /var/www/html/mccp-admin/data/
+$ docker ps
+CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                               NAMES
+a35b750bf9bc        nginx:latest            "/docker-entrypoint.…"   2 minutes ago       Up 2 minutes        0.0.0.0:81->80/tcp                  mccp-my_nginx_1
+496973f38ac2        phpmyadmin/phpmyadmin   "/docker-entrypoint.…"   3 minutes ago       Up 3 minutes        0.0.0.0:8080->80/tcp                mccp-my_phpmyadmin_1
+f767bb288dba        mccp-my_php-fpm         "docker-php-entrypoi…"   3 minutes ago       Up 3 minutes        9000/tcp                            mccp-my_php-fpm_1
+42e320acbac3        mccp-my_mysql           "docker-entrypoint.s…"   3 minutes ago       Up 2 minutes        0.0.0.0:3306->3306/tcp, 33060/tcp   mccp-my_mysql_1
+
+$ docker inspect mccp-my_nginx_1
+$ docker-compose exec mysql mysql -uroot -proot
+$ use database_name;
+$ source /var/lib/mysql/mccp_admin.sql;
+
+----------------------------------------------------------------------------
+5/ Composer install
+$ php -d memory_limit=2G composer.phar install
+
+$ docker-compose exec php-fpm composer install
+$ docker-compose exec php-fpm php -d memory_limit=2G composer install
+
+----------------------------------------------------------------------------
+6/ Build site
+Copy env.php & config.php
+
+$ docker-compose exec php-fpm bin/magento setup:upgrade
+$ docker-compose exec php-fpm php -d memory_limit=2G bin/magento setup:di:compile
+$ docker-compose exec php-fpm php -d memory_limit=2G bin/magento setup:static-content:deploy -f
+$ docker-compose exec php-fpm bin/magento c:f
+$ docker-compose exec php-fpm sudo chmod -R 755 var/ pub/ generated/
+$ docker-compose exec php-fpm ./n98-magerun2.phar sys:cron:run eod_lazada
+
+
+php -d memory_limit=2G  ./n98-magerun2.phar sys:cron:run sm_manual_fetch_new_orders
+php -d memory_limit=2G  bin/magento dev:order:get-document-orders
+
+----------------------------------------------------------------------------
+7/ Access site
+$ docker inspect mccp-my_nginx_1
+$ sudo nano /etc/hosts
+	"IPAddress": "172.19.0.5",
+
+$ docker stop $(docker ps -a -q)
+
+----------------------------------------------------------------------------
+8/ Access docker
+docker exec -it mccp-vn_php-fpm_1 bash
+docker exec -it mccp-admin_php-fpm_1 bash
+docker exec -it mccp-my_php-fpm_1 bash
+
+php bin/magento maintenance:enable
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy
+php bin/magento cache:enable
+php bin/magento c:f
+php bin/magento c:c
+php bin/magento maintenance:disable
+
+----------------------------------------------------------------------------
+9/ Re-generate khi update vendor
+composer dump-autoload
+
+composer install --no-cache
+----------------------------------------------------------------------------
+systemctl status mysql
+systemctl status nginx
+sudo systemctl restart nginx

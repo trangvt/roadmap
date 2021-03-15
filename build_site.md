@@ -20,10 +20,10 @@ Instal mysql
 Get a certificate (HTTPS)
 	https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx
 	Your certificate and chain have been saved at:
-   	/etc/letsencrypt/live/my-staging2.urbanfox.store/fullchain.pem
+   	/etc/letsencrypt/live/domain_name/fullchain.pem
 
 	Your key file has been saved at:
-   	/etc/letsencrypt/live/my-staging2.urbanfox.store/privkey.pem
+   	/etc/letsencrypt/live/domain_name/privkey.pem
 
 ------------------------------------------------------------------------------------
 Set server blocks 

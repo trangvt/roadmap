@@ -15,11 +15,11 @@ How To Set Up Nginx Server Blocks (Virtual Hosts) on Ubuntu 16.04
 	$ sudo nginx -t
 	https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04
 
-	nginx: [warn] conflicting server name "my-staging2.urbanfox.store" on 0.0.0.0:80, ignored
+	nginx: [warn] conflicting server name "domain_name" on 0.0.0.0:80, ignored
 ------------------
 
 	$ sudo nano /etc/hosts
-	127.0.0.1 my-staging2.urbanfox.store
+	127.0.0.1 domain_name
 ------------------
 
 	Check log
