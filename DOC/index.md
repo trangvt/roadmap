@@ -1,0 +1,2 @@
+- SIT: System integration testing
+- UAT: User Acceptance Test
